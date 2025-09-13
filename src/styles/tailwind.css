@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --color-background: #F9FAFB; /* soft light gray */
+    --color-foreground: #1E293B; /* slate gray text */
+    --color-border: #E2E8F0; /* light border */
+    --color-input: #F1F5F9; /* soft surface */
+    --color-ring: #4F46E5; /* indigo focus */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; 
+    --color-card-foreground: #1E293B; 
+    
+    /* Popover Colors */
+    --color-popover: #FFFFFF;
+    --color-popover-foreground: #1E293B;
+    
+    /* Muted Colors */
+    --color-muted: #F1F5F9; 
+    --color-muted-foreground: #64748B; 
+    
+    /* Primary Colors */
+    --color-primary: #4F46E5; /* indigo */
+    --color-primary-foreground: #FFFFFF; 
+    
+    /* Secondary Colors */
+    --color-secondary: #6366F1; /* softer indigo */
+    --color-secondary-foreground: #FFFFFF;
+    
+    /* Accent Colors */
+    --color-accent: #EC4899; /* pink accent */
+    --color-accent-foreground: #FFFFFF;
+    
+    /* Success Colors */
+    --color-success: #22C55E; /* green but modern */
+    --color-success-foreground: #FFFFFF;
+    
+    /* Warning Colors */
+    --color-warning: #F59E0B; /* amber */
+    --color-warning-foreground: #1E293B;
+    
+    /* Error/Destructive Colors */
+    --color-error: #EF4444; 
+    --color-error-foreground: #FFFFFF;
+    --color-destructive: #EF4444;
+    --color-destructive-foreground: #FFFFFF;
+  }
+  
+  /* Dark Theme */
+  [data-theme="dark"], .dark {
+    --color-background: #0F172A; /* dark slate */
+    --color-foreground: #F8FAFC; /* off-white */
+    --color-border: #334155; 
+    --color-input: #1E293B; 
+    --color-ring: #818CF8; /* softer indigo */
+    
+    /* Card */
+    --color-card: #1E293B;
+    --color-card-foreground: #F8FAFC;
+    
+    /* Popover */
+    --color-popover: #1E293B;
+    --color-popover-foreground: #F8FAFC;
+    
+    /* Muted */
+    --color-muted: #334155;
+    --color-muted-foreground: #CBD5E1;
+    
+    /* Primary */
+    --color-primary: #818CF8; 
+    --color-primary-foreground: #0F172A;
+    
+    /* Secondary */
+    --color-secondary: #6366F1;
+    --color-secondary-foreground: #F8FAFC;
+    
+    /* Accent */
+    --color-accent: #EC4899; 
+    --color-accent-foreground: #FFFFFF;
+    
+    /* Success */
+    --color-success: #22C55E; 
+    --color-success-foreground: #0F172A;
+    
+    /* Warning */
+    --color-warning: #FBBF24; 
+    --color-warning-foreground: #0F172A;
+    
+    /* Error */
+    --color-error: #F87171; 
+    --color-error-foreground: #FFFFFF;
+    --color-destructive: #F87171;
+    --color-destructive-foreground: #FFFFFF;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Simplified color classes */
+  .bg-background { background-color: var(--color-background); }
+  .text-foreground { color: var(--color-foreground); }
+  .border-border { border-color: var(--color-border); }
+  .bg-card { background-color: var(--color-card); }
+  .text-card-foreground { color: var(--color-card-foreground); }
+  .bg-primary { background-color: var(--color-primary); }
+  .text-primary { color: var(--color-primary); }
+  .text-primary-foreground { color: var(--color-primary-foreground); }
+  .bg-muted { background-color: var(--color-muted); }
+  .text-muted-foreground { color: var(--color-muted-foreground); }
+}
+
+@layer utilities {
+  /* Simplified animations */
+  @keyframes gentle-pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1.0; }
+  }
+  
+  .animate-gentle-pulse {
+    animation: gentle-pulse 3s ease-in-out infinite;
+  }
+  
+  /* Simplified hover effects */
+  .hover-lift {
+    @apply transition-all duration-200 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply transform -translate-y-1;
+  }
+  
+  /* Simplified shadows */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Theme transition */
+  .theme-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
