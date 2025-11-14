@@ -17,7 +17,7 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     // Load theme from localStorage or detect system preference
     const loadTheme = () => {
-      const savedSettings = localStorage.getItem('neurosync-theme-settings');
+      const savedSettings = localStorage.getItem('lilnest-theme-settings') || localStorage.getItem('neurosync-theme-settings');
       if (savedSettings) {
         const settings = JSON.parse(savedSettings);
         setTheme(settings?.currentTheme || 'light');
@@ -34,7 +34,7 @@ export const ThemeProvider = ({ children }) => {
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e) => {
-      const savedSettings = localStorage.getItem('neurosync-theme-settings');
+      const savedSettings = localStorage.getItem('lilnest-theme-settings') || localStorage.getItem('neurosync-theme-settings');
       if (!savedSettings) {
         setTheme(e?.matches ? 'dark' : 'light');
       }
@@ -57,20 +57,20 @@ export const ThemeProvider = ({ children }) => {
     setTheme(newTheme);
     
     // Save to localStorage
-    const savedSettings = localStorage.getItem('neurosync-theme-settings');
+    const savedSettings = localStorage.getItem('lilnest-theme-settings') || localStorage.getItem('neurosync-theme-settings');
     const settings = savedSettings ? JSON.parse(savedSettings) : {};
     settings.currentTheme = newTheme;
-    localStorage.setItem('neurosync-theme-settings', JSON.stringify(settings));
+    localStorage.setItem('lilnest-theme-settings', JSON.stringify(settings));
   };
 
   const setThemeMode = (newTheme) => {
     setTheme(newTheme);
     
     // Save to localStorage
-    const savedSettings = localStorage.getItem('neurosync-theme-settings');
+    const savedSettings = localStorage.getItem('lilnest-theme-settings') || localStorage.getItem('neurosync-theme-settings');
     const settings = savedSettings ? JSON.parse(savedSettings) : {};
     settings.currentTheme = newTheme;
-    localStorage.setItem('neurosync-theme-settings', JSON.stringify(settings));
+    localStorage.setItem('lilnest-theme-settings', JSON.stringify(settings));
   };
 
   const value = {

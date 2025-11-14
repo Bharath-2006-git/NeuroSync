@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import Icon from '../AppIcon';
 import Button from './Button';
 import ThemeToggle from './ThemeToggle';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout, role } = useAuth();
 
   const navItems = [
     { label: 'Home', path: '/dashboard-home', icon: 'Home' },
-    { label: 'Focus', path: '/pomodoro-timer', icon: 'Timer' },
-    { label: 'Break', path: '/break-session', icon: 'Coffee' },
-    { label: 'Garden', path: '/virtual-garden', icon: 'Flower2' },
+    { label: 'Fitness', path: '/fitness', icon: 'Dumbbell' },
+    { label: 'Diet', path: '/diet', icon: 'Utensils' },
+    { label: 'Growth', path: '/growth', icon: 'BarChart3' },
+    { label: 'Medicine', path: '/medicine', icon: 'Pill' },
+    { label: 'Rewards', path: '/rewards', icon: 'Trophy' },
+    { label: 'Community', path: '/community', icon: 'Users' },
+    { label: 'Marketplace', path: '/marketplace', icon: 'Store' },
+    { label: 'Visualizer', path: '/visualizer', icon: 'Cube' },
     { label: 'Settings', path: '/settings-hub', icon: 'Settings' }
   ];
+  if (role === 'doctor' || role === 'admin') {
+    navItems.splice(6, 0, { label: 'Doctor', path: '/doctor', icon: 'Stethoscope' });
+  }
 
   const currentPath = window.location?.pathname;
 
@@ -33,13 +43,13 @@ const Header = () => {
             </svg>
           </div>
           <h1 className="text-lg font-semibold text-foreground">
-            NeuroSync
+            LILNEST
           </h1>
         </div>
 
         {/* Desktop Navigation - Simplified */}
         <nav className="hidden md:flex items-center space-x-1">
-          {navItems?.slice(0, 4)?.map((item) => (
+          {navItems?.map((item) => (
             <Button
               key={item?.path}
               variant={currentPath === item?.path ? "default" : "ghost"}
@@ -55,6 +65,12 @@ const Header = () => {
         {/* Right Section - Simplified */}
         <div className="flex items-center space-x-2">
           <ThemeToggle />
+          {/* Auth */}
+          {!user ? (
+            <Button variant={currentPath === '/login' ? 'default' : 'ghost'} size="sm" onClick={() => handleNavigation('/login')} className="hidden md:inline-flex">Login</Button>
+          ) : (
+            <Button variant="ghost" size="sm" onClick={async () => { try { await logout(); handleNavigation('/login'); } catch {} }}>Logout</Button>
+          )}
           
           {/* Settings for desktop */}
           <div className="hidden md:block">

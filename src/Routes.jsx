@@ -9,6 +9,24 @@ import SettingsHub from './pages/settings-hub';
 import BreakSession from './pages/break-session';
 import DashboardHome from './pages/dashboard-home';
 import WellnessActions from './pages/wellness-actions';
+// LILNEST sections
+import Fitness from './pages/fitness';
+import Diet from './pages/diet';
+import Growth from './pages/growth';
+import Medicine from './pages/medicine';
+import Rewards from './pages/rewards';
+import Community from './pages/community';
+import KickCounter from './pages/kick-counter';
+import Emergency from './pages/emergency';
+import Login from './pages/login';
+import Register from './pages/register';
+import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/profile';
+import DoctorDashboard from './pages/doctor';
+import ResetPassword from './pages/reset-password';
+import PatientDetail from './pages/doctor/patient';
+import Marketplace from './pages/marketplace';
+import Visualizer from './pages/visualizer';
 
 const Routes = () => {
   return (
@@ -23,6 +41,22 @@ const Routes = () => {
         <Route path="/break-session" element={<BreakSession />} />
         <Route path="/wellness-actions/:actionType" element={<WellnessActions />} />
         <Route path="/dashboard-home" element={<DashboardHome />} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/fitness" element={<ProtectedRoute><Fitness /></ProtectedRoute>} />
+        <Route path="/diet" element={<ProtectedRoute><Diet /></ProtectedRoute>} />
+        <Route path="/growth" element={<ProtectedRoute><Growth /></ProtectedRoute>} />
+        <Route path="/medicine" element={<ProtectedRoute><Medicine /></ProtectedRoute>} />
+        <Route path="/rewards" element={<ProtectedRoute><Rewards /></ProtectedRoute>} />
+        <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
+        <Route path="/kick-counter" element={<ProtectedRoute><KickCounter /></ProtectedRoute>} />
+        <Route path="/emergency" element={<ProtectedRoute><Emergency /></ProtectedRoute>} />
+        <Route path="/doctor" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>} />
+        <Route path="/doctor/:patientId" element={<ProtectedRoute><PatientDetail /></ProtectedRoute>} />
+        <Route path="/marketplace" element={<ProtectedRoute><Marketplace /></ProtectedRoute>} />
+        <Route path="/visualizer" element={<ProtectedRoute><Visualizer /></ProtectedRoute>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>

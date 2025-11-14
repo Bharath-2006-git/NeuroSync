@@ -19,6 +19,28 @@ const QuickActionsGrid = () => {
       category: 'Emotional'
     },
     {
+      id: 'kick-counter',
+      title: 'Kick Counter',
+      description: 'Track fetal movements',
+      icon: 'HeartPulse',
+      color: 'bg-pink-500/10 hover:bg-pink-500/20',
+      iconColor: 'text-pink-500',
+      action: () => navigate('/kick-counter'),
+      duration: '2 hr session',
+      category: 'Pregnancy'
+    },
+    {
+      id: 'sos',
+      title: 'Emergency',
+      description: 'Open SOS screen',
+      icon: 'PhoneCall',
+      color: 'bg-rose-500/10 hover:bg-rose-500/20',
+      iconColor: 'text-rose-500',
+      action: () => navigate('/emergency'),
+      duration: 'Quick',
+      category: 'Safety'
+    },
+    {
       id: 'gratitude',
       title: 'Gratitude Journal',
       description: 'Record what you\'re thankful for',

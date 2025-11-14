@@ -4,6 +4,7 @@ import WellnessOverviewPanel from './components/WellnessOverviewPanel';
 import QuickActionsGrid from './components/QuickActionsGrid';
 import MindfulnessFeed from './components/MindfulnessFeed';
 import StatusIndicatorPanel from './components/StatusIndicatorPanel';
+import HydrationWidget from '../../components/ui/HydrationWidget';
 
 const DashboardHome = () => {
   return (
@@ -38,6 +39,7 @@ const DashboardHome = () => {
           <div className="space-y-6">
             <MindfulnessFeed />
             <StatusIndicatorPanel />
+            <HydrationWidget />
           </div>
         </div>
 

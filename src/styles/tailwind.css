@@ -9,44 +9,44 @@
 
 @layer base {
   :root {
-    /* Light Theme Colors */
-    --color-background: #F9FAFB; /* soft light gray */
-    --color-foreground: #1E293B; /* slate gray text */
-    --color-border: #E2E8F0; /* light border */
-    --color-input: #F1F5F9; /* soft surface */
-    --color-ring: #4F46E5; /* indigo focus */
+    /* Light Theme Colors — LILNEST pastel pink theme */
+    --color-background: #FFF1F5; /* rose-50 */
+    --color-foreground: #3F3D56; /* soft slate for readability */
+    --color-border: #F8CFE0; /* light pink border */
+    --color-input: #FFE4EC; /* elevated surface */
+    --color-ring: #F472B6; /* pink-400 focus */
     
     /* Card Colors */
     --color-card: #FFFFFF; 
-    --color-card-foreground: #1E293B; 
+    --color-card-foreground: #3F3D56; 
     
     /* Popover Colors */
     --color-popover: #FFFFFF;
-    --color-popover-foreground: #1E293B;
+    --color-popover-foreground: #3F3D56;
     
     /* Muted Colors */
-    --color-muted: #F1F5F9; 
-    --color-muted-foreground: #64748B; 
+    --color-muted: #FFE4EC; 
+    --color-muted-foreground: #8E8AA0; 
     
     /* Primary Colors */
-    --color-primary: #4F46E5; /* indigo */
+    --color-primary: #EC4899; /* pink-500 */
     --color-primary-foreground: #FFFFFF; 
     
     /* Secondary Colors */
-    --color-secondary: #6366F1; /* softer indigo */
-    --color-secondary-foreground: #FFFFFF;
+    --color-secondary: #F9A8D4; /* pink-300 */
+    --color-secondary-foreground: #3F3D56;
     
     /* Accent Colors */
-    --color-accent: #EC4899; /* pink accent */
+    --color-accent: #FB7185; /* rose-400 */
     --color-accent-foreground: #FFFFFF;
     
     /* Success Colors */
-    --color-success: #22C55E; /* green but modern */
+    --color-success: #22C55E;
     --color-success-foreground: #FFFFFF;
     
     /* Warning Colors */
-    --color-warning: #F59E0B; /* amber */
-    --color-warning-foreground: #1E293B;
+    --color-warning: #F59E0B; 
+    --color-warning-foreground: #3F3D56;
     
     /* Error/Destructive Colors */
     --color-error: #EF4444; 
@@ -57,49 +57,49 @@
   
   /* Dark Theme */
   [data-theme="dark"], .dark {
-    --color-background: #0F172A; /* dark slate */
-    --color-foreground: #F8FAFC; /* off-white */
-    --color-border: #334155; 
-    --color-input: #1E293B; 
-    --color-ring: #818CF8; /* softer indigo */
+    --color-background: #1B1325; /* deep plum */
+    --color-foreground: #FCE7F3; /* pink-100 */
+    --color-border: #3B2B41; 
+    --color-input: #25182E; 
+    --color-ring: #F9A8D4; /* soft pink */
     
     /* Card */
-    --color-card: #1E293B;
-    --color-card-foreground: #F8FAFC;
+    --color-card: #25182E;
+    --color-card-foreground: #FCE7F3;
     
     /* Popover */
-    --color-popover: #1E293B;
-    --color-popover-foreground: #F8FAFC;
+    --color-popover: #25182E;
+    --color-popover-foreground: #FCE7F3;
     
     /* Muted */
-    --color-muted: #334155;
-    --color-muted-foreground: #CBD5E1;
+    --color-muted: #3B2B41;
+    --color-muted-foreground: #E9D5FF;
     
     /* Primary */
-    --color-primary: #818CF8; 
-    --color-primary-foreground: #0F172A;
+    --color-primary: #F472B6; 
+    --color-primary-foreground: #1B1325;
     
     /* Secondary */
-    --color-secondary: #6366F1;
-    --color-secondary-foreground: #F8FAFC;
+    --color-secondary: #DBA4C6;
+    --color-secondary-foreground: #1B1325;
     
     /* Accent */
-    --color-accent: #EC4899; 
-    --color-accent-foreground: #FFFFFF;
+    --color-accent: #FB7185; 
+    --color-accent-foreground: #1B1325;
     
     /* Success */
     --color-success: #22C55E; 
-    --color-success-foreground: #0F172A;
+    --color-success-foreground: #1B1325;
     
     /* Warning */
     --color-warning: #FBBF24; 
-    --color-warning-foreground: #0F172A;
+    --color-warning-foreground: #1B1325;
     
     /* Error */
     --color-error: #F87171; 
-    --color-error-foreground: #FFFFFF;
+    --color-error-foreground: #1B1325;
     --color-destructive: #F87171;
-    --color-destructive-foreground: #FFFFFF;
+    --color-destructive-foreground: #1B1325;
   }
   
   * {
