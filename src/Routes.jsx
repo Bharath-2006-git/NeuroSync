@@ -29,6 +29,7 @@ import Marketplace from './pages/marketplace';
 import ServiceProviderProfile from './pages/marketplace/ServiceProviderProfile';
 import TimeCapsule from './pages/time-capsule';
 import Visualizer from './pages/visualizer';
+import AIAssistant from './components/ui/AIAssistant';
 
 const Routes = () => {
   return (
@@ -55,7 +56,7 @@ const Routes = () => {
         <Route path="/doctor" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>} />
         <Route path="/doctor/:patientId" element={<ProtectedRoute><PatientDetail /></ProtectedRoute>} />
         <Route path="/marketplace" element={<ProtectedRoute><Marketplace /></ProtectedRoute>} />
-        <Route path="/marketplace/provider/:providerId" element={<ProtectedRoute><ServiceProviderProfile /></ProtectedRoute>} />
+        <Route path="/marketplace/provider/:id" element={<ProtectedRoute><ServiceProviderProfile /></ProtectedRoute>} />
         <Route path="/time-capsule" element={<ProtectedRoute><TimeCapsule /></ProtectedRoute>} />
         <Route path="/visualizer" element={<ProtectedRoute><Visualizer /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
@@ -63,6 +64,7 @@ const Routes = () => {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
+      <AIAssistant />
       </ErrorBoundary>
     </BrowserRouter>
   );

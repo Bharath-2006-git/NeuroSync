@@ -17,10 +17,27 @@ const Register = () => {
     setError('');
     setLoading(true);
     try {
+      console.log('Attempting registration:', { email, name });
       await register(email, password, name);
       window.location.href = '/dashboard-home';
     } catch (err) {
-      setError('Registration failed');
+      console.error('Registration error:', err);
+      console.error('Error code:', err.code);
+      console.error('Error message:', err.message);
+      
+      let errorMessage = 'Registration failed';
+      if (err.code === 'auth/operation-not-allowed') {
+        errorMessage = '⚠️ Email/Password authentication is disabled. Go to Firebase Console > Authentication > Sign-in methods and enable Email/Password.';
+      } else if (err.code === 'auth/email-already-in-use') {
+        errorMessage = 'Email already registered. Please login instead.';
+      } else if (err.code === 'auth/weak-password') {
+        errorMessage = 'Password should be at least 6 characters';
+      } else if (err.code === 'auth/invalid-email') {
+        errorMessage = 'Invalid email format';
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

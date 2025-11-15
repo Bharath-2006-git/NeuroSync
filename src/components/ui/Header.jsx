@@ -10,11 +10,6 @@ const Header = () => {
 
   const navItems = [
     { label: 'Home', path: '/dashboard-home', icon: 'Home' },
-    { label: 'Fitness', path: '/fitness', icon: 'Dumbbell' },
-    { label: 'Diet', path: '/diet', icon: 'Utensils' },
-    { label: 'Growth', path: '/growth', icon: 'BarChart3' },
-    { label: 'Medicine', path: '/medicine', icon: 'Pill' },
-    { label: 'Rewards', path: '/rewards', icon: 'Trophy' },
     { label: 'Community', path: '/community', icon: 'Users' },
     { label: 'Marketplace', path: '/marketplace', icon: 'Store' },
     { label: 'Time Capsule', path: '/time-capsule', icon: 'Gift' },

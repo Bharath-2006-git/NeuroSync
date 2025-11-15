@@ -7,9 +7,9 @@ import Icon from '../../components/AppIcon';
 // Capsule Card Component
 const CapsuleCard = ({ capsule, onClick }) => {
   const getStatusColor = (status) => {
-    if (status === 'locked') return 'from-blue-400 to-blue-500';
-    if (status === 'editable') return 'from-amber-400 to-orange-400';
-    return 'from-emerald-400 to-green-500';
+    if (status === 'locked') return 'from-purple-500 to-indigo-500';
+    if (status === 'editable') return 'from-yellow-500 to-orange-500';
+    return 'from-green-500 to-emerald-500';
   };
 
   const getStatusIcon = (status) => {
@@ -24,7 +24,7 @@ const CapsuleCard = ({ capsule, onClick }) => {
       className="group relative bg-gradient-to-br from-card to-card/50 rounded-3xl p-6 border border-border hover:border-primary/50 cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden"
     >
       {/* Animated Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
       {/* Status Badge */}
       <div className={`absolute top-4 right-4 px-3 py-1 rounded-full bg-gradient-to-r ${getStatusColor(capsule.status)} text-white text-xs font-bold shadow-lg flex items-center gap-1`}>
@@ -95,7 +95,7 @@ const TemplateCard = ({ template, onClick }) => (
     className="group relative bg-gradient-to-br from-card to-card/30 rounded-3xl p-6 border border-border hover:border-primary/50 cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden"
   >
     {/* Animated Background */}
-    <div className={`absolute inset-0 bg-gradient-to-br ${template.gradient} opacity-3 group-hover:opacity-8 transition-opacity duration-500`}></div>
+    <div className={`absolute inset-0 bg-gradient-to-br ${template.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
     
     <div className="relative">
       {/* Icon */}
@@ -156,7 +156,7 @@ const CreateCapsuleModal = ({ isOpen, onClose, template }) => {
     <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
       <div className="bg-background rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/20">
         {/* Header */}
-        <div className="sticky top-0 bg-gradient-to-r from-primary to-primary text-white p-6 rounded-t-3xl">
+        <div className="sticky top-0 bg-gradient-to-r from-primary via-purple-600 to-pink-600 text-white p-6 rounded-t-3xl">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-2xl font-bold">Create Time Capsule</h2>
@@ -311,7 +311,7 @@ const CreateCapsuleModal = ({ isOpen, onClose, template }) => {
                 <h3 className="text-xl font-bold text-foreground mb-4">Review & Lock</h3>
                 
                 {/* Summary */}
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 mb-6 border border-primary/20">
+                <div className="bg-gradient-to-br from-primary/10 via-purple-500/10 to-pink-500/10 rounded-2xl p-6 mb-6 border border-primary/20">
                   <h4 className="font-bold text-foreground mb-4">Capsule Summary</h4>
                   <div className="space-y-3">
                     <div className="flex justify-between">
@@ -351,7 +351,7 @@ const CreateCapsuleModal = ({ isOpen, onClose, template }) => {
                   <Icon name="ArrowLeft" className="w-5 h-5 mr-2" />
                   Back
                 </Button>
-                <Button onClick={handleCreate} className="flex-1">
+                <Button onClick={handleCreate} className="flex-1 bg-gradient-to-r from-primary to-purple-600">
                   <Icon name="Lock" className="w-5 h-5 mr-2" />
                   Create & Lock Capsule
                 </Button>
@@ -378,7 +378,7 @@ const TimeCapsule = () => {
       title: 'First Day Home',
       description: 'Our first moments together as a family. The joy, the fear, the overwhelming love.',
       icon: 'Home',
-      gradient: 'from-pink-400 to-rose-400',
+      gradient: 'from-pink-500 to-rose-500',
       createdDate: 'Nov 1, 2024',
       unlockText: 'Opens in 1 year',
       status: 'locked',
@@ -392,7 +392,7 @@ const TimeCapsule = () => {
       title: 'Week 20 Ultrasound',
       description: 'The moment we saw your face for the first time. You were so beautiful.',
       icon: 'Heart',
-      gradient: 'from-blue-400 to-indigo-400',
+      gradient: 'from-purple-500 to-indigo-500',
       createdDate: 'Oct 15, 2024',
       unlockText: 'Opens in 5 years',
       status: 'locked',
@@ -406,7 +406,7 @@ const TimeCapsule = () => {
       title: 'First Words Draft',
       description: 'Preparing for the day you speak your first words. What will they be?',
       icon: 'MessageCircle',
-      gradient: 'from-sky-400 to-cyan-400',
+      gradient: 'from-blue-500 to-cyan-500',
       createdDate: 'Nov 10, 2024',
       unlockText: 'Editable for 18 hours',
       status: 'editable',
@@ -420,7 +420,7 @@ const TimeCapsule = () => {
       title: 'Teenage Wisdom',
       description: 'Advice for when you face the challenges of growing up.',
       icon: 'Users',
-      gradient: 'from-emerald-400 to-teal-400',
+      gradient: 'from-green-500 to-emerald-500',
       createdDate: 'Nov 5, 2024',
       unlockText: 'Opens in 13 years',
       status: 'locked',
@@ -434,7 +434,7 @@ const TimeCapsule = () => {
       title: 'Graduation Message',
       description: 'For your high school graduation day. We are so proud of you.',
       icon: 'Award',
-      gradient: 'from-amber-400 to-orange-400',
+      gradient: 'from-yellow-500 to-orange-500',
       createdDate: 'Oct 28, 2024',
       unlockText: 'Opens in 18 years',
       status: 'locked',
@@ -448,7 +448,7 @@ const TimeCapsule = () => {
       title: 'Wedding Day Letter',
       description: 'For the day you find your forever love. May you be as happy as we are.',
       icon: 'Heart',
-      gradient: 'from-pink-400 to-pink-500',
+      gradient: 'from-pink-500 to-purple-500',
       createdDate: 'Nov 3, 2024',
       unlockText: 'Opens in 25 years',
       status: 'locked',
@@ -466,7 +466,7 @@ const TimeCapsule = () => {
       title: 'First Day Home',
       description: 'Capture the emotions of bringing your baby home for the first time. The joy, nerves, and overwhelming love.',
       icon: 'Home',
-      gradient: 'from-pink-400 to-rose-400',
+      gradient: 'from-pink-500 to-rose-500',
       unlockAge: 'Birth'
     },
     {
@@ -474,7 +474,7 @@ const TimeCapsule = () => {
       title: 'First Birthday Letter',
       description: 'Reflect on the incredible first year. All the milestones, challenges, and beautiful moments.',
       icon: 'Cake',
-      gradient: 'from-blue-400 to-indigo-400',
+      gradient: 'from-purple-500 to-indigo-500',
       unlockAge: '1 Year'
     },
     {
@@ -482,7 +482,7 @@ const TimeCapsule = () => {
       title: 'First Day of School',
       description: 'Message for their first day of kindergarten. Encouraging words for this big milestone.',
       icon: 'School',
-      gradient: 'from-sky-400 to-cyan-400',
+      gradient: 'from-blue-500 to-cyan-500',
       unlockAge: '5 Years'
     },
     {
@@ -490,7 +490,7 @@ const TimeCapsule = () => {
       title: 'Teenage Wisdom',
       description: 'Advice for navigating adolescence. Life lessons you wish you knew at their age.',
       icon: 'Users',
-      gradient: 'from-emerald-400 to-teal-400',
+      gradient: 'from-green-500 to-emerald-500',
       unlockAge: '13 Years'
     },
     {
@@ -498,7 +498,7 @@ const TimeCapsule = () => {
       title: 'Graduation Message',
       description: 'For their high school graduation. Pride, joy, and hopes for their future.',
       icon: 'Award',
-      gradient: 'from-amber-400 to-orange-400',
+      gradient: 'from-yellow-500 to-orange-500',
       unlockAge: '18 Years'
     },
     {
@@ -506,7 +506,7 @@ const TimeCapsule = () => {
       title: 'Wedding Day',
       description: 'A heartfelt letter for the day they marry their love. Wishes for lifelong happiness.',
       icon: 'Heart',
-      gradient: 'from-pink-400 to-pink-500',
+      gradient: 'from-pink-500 to-purple-500',
       unlockAge: '25+ Years'
     },
     {
@@ -514,7 +514,7 @@ const TimeCapsule = () => {
       title: 'First Heartbeat',
       description: 'The day you heard their heartbeat. That magical sound that changed everything.',
       icon: 'Heart',
-      gradient: 'from-rose-400 to-pink-400',
+      gradient: 'from-red-500 to-pink-500',
       unlockAge: '5 Years'
     },
     {
@@ -522,7 +522,7 @@ const TimeCapsule = () => {
       title: 'First Steps',
       description: 'When they took their first steps. The pride and excitement of watching them walk.',
       icon: 'Baby',
-      gradient: 'from-orange-400 to-amber-400',
+      gradient: 'from-orange-500 to-yellow-500',
       unlockAge: '10 Years'
     }
   ], []);
@@ -541,14 +541,16 @@ const TimeCapsule = () => {
       <main className="pt-20 pb-10 px-4 max-w-7xl mx-auto space-y-8">
         {/* Hero Section */}
         <div className="relative overflow-hidden rounded-3xl">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-purple-500/10 to-pink-500/10"></div>
           <div className="relative p-8 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               <Icon name="Lock" className="w-4 h-4" />
               Memories Locked Until Their Future
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-foreground">
-              Legacy Time Capsule
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-primary via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Legacy Time Capsule
+              </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
               Capture today's emotions for tomorrow's joy. Write letters, save memories, and create gifts your child will cherish for a lifetime.
@@ -556,7 +558,7 @@ const TimeCapsule = () => {
             <Button 
               size="lg" 
               onClick={() => setShowCreateModal(true)}
-              className="shadow-lg"
+              className="bg-gradient-to-r from-primary to-purple-600 shadow-xl"
             >
               <Icon name="Plus" className="w-5 h-5 mr-2" />
               Create Time Capsule
@@ -567,10 +569,10 @@ const TimeCapsule = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { icon: 'Archive', label: 'Total Capsules', value: '6', color: 'from-blue-400 to-blue-500' },
-            { icon: 'Lock', label: 'Locked', value: '5', color: 'from-teal-400 to-cyan-500' },
-            { icon: 'Clock', label: 'Next Unlock', value: '1 Year', color: 'from-emerald-400 to-green-500' },
-            { icon: 'Image', label: 'Memories', value: '20+', color: 'from-pink-400 to-rose-400' }
+            { icon: 'Archive', label: 'Total Capsules', value: '6', color: 'from-blue-500 to-cyan-500' },
+            { icon: 'Lock', label: 'Locked', value: '5', color: 'from-purple-500 to-indigo-500' },
+            { icon: 'Clock', label: 'Next Unlock', value: '1 Year', color: 'from-green-500 to-emerald-500' },
+            { icon: 'Image', label: 'Memories', value: '20+', color: 'from-pink-500 to-rose-500' }
           ].map((stat, i) => (
             <div key={i} className="bg-card rounded-2xl p-6 border border-border shadow-soft hover:shadow-lg transition-all">
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-3`}>
@@ -682,7 +684,7 @@ const TimeCapsule = () => {
         )}
 
         {/* Integration Links */}
-        <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl p-8 border-2 border-primary/20">
+        <div className="bg-gradient-to-r from-primary/10 via-purple-500/10 to-pink-500/10 rounded-3xl p-8 border-2 border-primary/20">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-foreground mb-2">Capture Memories Anywhere</h3>
             <p className="text-muted-foreground">Save special moments from across the app to your time capsule</p>
@@ -693,21 +695,21 @@ const TimeCapsule = () => {
                 title: 'Community Posts',
                 description: 'Save meaningful conversations',
                 icon: 'Users',
-                color: 'from-sky-400 to-cyan-400',
+                color: 'from-blue-500 to-cyan-500',
                 link: '/community'
               },
               {
                 title: 'Expert Sessions',
                 description: 'Remember consultations',
                 icon: 'Calendar',
-                color: 'from-blue-400 to-indigo-400',
+                color: 'from-purple-500 to-indigo-500',
                 link: '/marketplace'
               },
               {
                 title: 'Baby Visualizer',
                 description: 'Preserve weekly memories',
                 icon: 'Baby',
-                color: 'from-pink-400 to-rose-400',
+                color: 'from-pink-500 to-rose-500',
                 link: '/visualizer'
               }
             ].map((item, i) => (

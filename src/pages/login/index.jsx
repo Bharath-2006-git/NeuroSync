@@ -16,10 +16,44 @@ const Login = () => {
     setError('');
     setLoading(true);
     try {
-      await login(email, password);
+      console.log('Attempting login with:', email);
+      const result = await login(email, password);
+      console.log('Login successful:', result);
       window.location.href = '/dashboard-home';
     } catch (err) {
-      setError('Invalid credentials');
+      console.error('Full login error:', err);
+      console.error('Error code:', err.code);
+      console.error('Error message:', err.message);
+      
+      let errorMessage = 'Login failed';
+      
+      // Check if Firebase is properly configured
+      if (err.code === 'auth/operation-not-allowed') {
+        errorMessage = '⚠️ Email/Password authentication is disabled. Go to Firebase Console > Authentication > Sign-in methods and enable Email/Password.';
+      } else if (err.code === 'auth/configuration-not-found' || err.message?.includes('configuration')) {
+        errorMessage = 'Firebase configuration error. Check your Firebase settings.';
+      } else if (err.code === 'auth/api-key-not-valid') {
+        errorMessage = 'Invalid Firebase API key. Check .env file.';
+      } else if (err.code === 'auth/user-not-found') {
+        errorMessage = 'No account found. Please register first.';
+      } else if (err.code === 'auth/wrong-password') {
+        errorMessage = 'Incorrect password';
+      } else if (err.code === 'auth/invalid-email') {
+        errorMessage = 'Invalid email format';
+      } else if (err.code === 'auth/user-disabled') {
+        errorMessage = 'This account has been disabled';
+      } else if (err.code === 'auth/too-many-requests') {
+        errorMessage = 'Too many failed attempts. Try again later';
+      } else if (err.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Check internet connection';
+      } else if (err.code === 'auth/invalid-credential') {
+        errorMessage = 'Email or password is incorrect';
+      } else if (err.code === 'auth/invalid-login-credentials') {
+        errorMessage = 'Invalid login credentials. Check email/password.';
+      } else {
+        errorMessage = `Error: ${err.code || err.message || 'Unknown error'}`;
+      }
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -35,7 +69,7 @@ const Login = () => {
           <Input label="Password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
           {error && <div className="text-sm text-error">{error}</div>}
           <Button type="submit" loading={loading} fullWidth>Login</Button>
-          <Button type="button" variant="secondary" fullWidth onClick={async ()=>{ try{ await loginWithGoogle(); window.location.href='/dashboard-home'; } catch{} }}>Continue with Google</Button>
+          <Button type="button" variant="secondary" fullWidth onClick={async ()=>{ try{ await loginWithGoogle(); window.location.href='/dashboard-home'; } catch(err){ console.error('Google login error:', err); setError('Google login failed'); } }}>Continue with Google</Button>
           <div className="text-sm text-muted-foreground">No account? <a href="/register" className="text-primary">Register</a></div>
           <div className="text-sm"><a href="/reset-password" className="text-primary">Forgot password?</a></div>
         </form>
