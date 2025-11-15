@@ -176,7 +176,10 @@ const AIAssistant = () => {
       }
 
       // Otherwise, call real Groq API
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/chat`, {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const endpoint = apiUrl ? `${apiUrl}/api/chat` : '/api/chat';
+      
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -13,7 +13,9 @@ const ChatWidget = () => {
     setInput('');
     setLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/chat`, {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const endpoint = apiUrl ? `${apiUrl}/api/chat` : '/api/chat';
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [...messages, { role: 'user', content: text }].slice(-12), model: 'llama-3.1-8b-instant' }),
