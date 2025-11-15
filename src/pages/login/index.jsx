@@ -69,7 +69,7 @@ const Login = () => {
           <Input label="Password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
           {error && <div className="text-sm text-error">{error}</div>}
           <Button type="submit" loading={loading} fullWidth>Login</Button>
-          <Button type="button" variant="secondary" fullWidth onClick={async ()=>{ try{ await loginWithGoogle(); window.location.href='/dashboard-home'; } catch(err){ console.error('Google login error:', err); setError('Google login failed'); } }}>Continue with Google</Button>
+          <Button type="button" variant="secondary" fullWidth onClick={async ()=>{ try{ await loginWithGoogle(); navigate('/dashboard-home'); } catch(err){ console.error('Google login error:', err); setError('Google login failed'); } }}>Continue with Google</Button>
           <div className="text-sm text-muted-foreground">No account? <a href="/register" className="text-primary">Register</a></div>
           <div className="text-sm"><a href="/reset-password" className="text-primary">Forgot password?</a></div>
         </form>

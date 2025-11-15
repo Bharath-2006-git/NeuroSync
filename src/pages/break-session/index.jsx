@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import WellnessTabNavigation from '../../components/ui/WellnessTabNavigation';
 import WellnessStatusIndicator from '../../components/ui/WellnessStatusIndicator';
@@ -17,6 +17,7 @@ import Icon from '../../components/AppIcon';
 
 const BreakSession = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [sessionState, setSessionState] = useState({
     isActive: false,
     isPaused: false,
@@ -363,7 +364,7 @@ const BreakSession = () => {
                     
                     <Button
                       variant="outline"
-                      onClick={() => window.location.href = '/dashboard-home'}
+                      onClick={() => navigate('/dashboard-home')}
                       iconName="Home"
                       iconPosition="left"
                       className="organic-hover"

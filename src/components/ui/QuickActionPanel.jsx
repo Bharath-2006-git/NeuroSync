@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
 
 const QuickActionPanel = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBreakMenuOpen, setIsBreakMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const quickActions = [
     {
@@ -45,12 +47,12 @@ const QuickActionPanel = () => {
 
   const handleQuickFocus = () => {
     // Navigate to pomodoro timer with quick start
-    window.location.href = '/pomodoro-timer?quick=true';
+    navigate('/pomodoro-timer?quick=true');
   };
 
   const handleQuickBreathe = () => {
     // Start breathing exercise
-    window.location.href = '/break-session?type=breathing';
+    navigate('/break-session?type=breathing');
   };
 
   const toggleBreakMenu = () => {
@@ -58,7 +60,7 @@ const QuickActionPanel = () => {
   };
 
   const handleBreakOption = (option) => {
-    window.location.href = `/break-session?type=${option?.label?.toLowerCase()?.replace(' ', '-')}&duration=${option?.duration}`;
+    navigate(`/break-session?type=${option?.label?.toLowerCase()?.replace(' ', '-')}&duration=${option?.duration}`);
     setIsBreakMenuOpen(false);
   };
 

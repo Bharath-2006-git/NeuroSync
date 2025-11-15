@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import TimerDisplay from './components/TimerDisplay';
@@ -8,6 +9,7 @@ import ProductivityInsights from './components/ProductivityInsights';
 import WebsiteBlocker from './components/WebsiteBlocker';
 
 const PomodoroTimer = () => {
+  const navigate = useNavigate();
   // Timer State
   const [timeRemaining, setTimeRemaining] = useState(25 * 60); // 25 minutes in seconds
   const [totalTime, setTotalTime] = useState(25 * 60);
@@ -300,7 +302,7 @@ const PomodoroTimer = () => {
                     fullWidth
                     iconName="Coffee"
                     iconPosition="left"
-                    onClick={() => window.location.href = '/break-session'}
+                    onClick={() => navigate('/break-session')}
                     className="justify-start"
                   >
                     Take a Break
@@ -311,7 +313,7 @@ const PomodoroTimer = () => {
                     fullWidth
                     iconName="Flower2"
                     iconPosition="left"
-                    onClick={() => window.location.href = '/virtual-garden'}
+                    onClick={() => navigate('/virtual-garden')}
                     className="justify-start"
                   >
                     View Garden

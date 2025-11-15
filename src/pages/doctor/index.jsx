@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -41,6 +42,7 @@ const PrescriptionForm = ({ patientId }) => {
 const DoctorDashboard = () => {
   const [patients, setPatients] = useState([]);
   const [name, setName] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const q = query(collection(db, 'patients'), orderBy('createdAt', 'desc'));
@@ -74,7 +76,7 @@ const DoctorDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {patients.map((p) => (
             <div key={p.id}>
-              <PatientCard p={p} onOpen={() => window.location.href = `/doctor/${p.id}`} />
+              <PatientCard p={p} onOpen={() => navigate(`/doctor/${p.id}`)} />
             </div>
           ))}
         </div>

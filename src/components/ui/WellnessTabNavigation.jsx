@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 
 const WellnessTabNavigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('/dashboard-home');
   const [sessionStatus, setSessionStatus] = useState({
     isActive: false,
@@ -18,12 +21,12 @@ const WellnessTabNavigation = () => {
   ];
 
   useEffect(() => {
-    setActiveTab(window.location?.pathname);
-  }, []);
+    setActiveTab(location.pathname);
+  }, [location.pathname]);
 
   const handleTabClick = (path) => {
     setActiveTab(path);
-    window.location.href = path;
+    navigate(path);
   };
 
   const getTabIndicator = (path) => {

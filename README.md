@@ -325,4 +325,3 @@ For issues and questions:
 
 Built with ❤️ for expectant mothers worldwide
 
-**Live Demo**: [https://neurosync-hmo8.onrender.com](https://neurosync-hmo8.onrender.com)

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
 const StatusIndicatorPanel = () => {
+  const navigate = useNavigate();
   const [reminderSettings, setReminderSettings] = useState({
     breakReminders: true,
     interval: 25,
@@ -202,7 +204,7 @@ const StatusIndicatorPanel = () => {
           size="sm"
           iconName="Settings"
           iconPosition="left"
-          onClick={() => window.location.href = '/settings-hub'}
+          onClick={() => navigate('/settings-hub')}
         >
           All Settings
         </Button>

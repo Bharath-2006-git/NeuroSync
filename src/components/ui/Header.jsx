@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
 import ThemeToggle from './ThemeToggle';
@@ -7,6 +8,8 @@ import { useAuth } from '../../contexts/AuthContext';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout, role } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     { label: 'Home', path: '/dashboard-home', icon: 'Home' },
@@ -20,10 +23,10 @@ const Header = () => {
     navItems.splice(6, 0, { label: 'Doctor', path: '/doctor', icon: 'Stethoscope' });
   }
 
-  const currentPath = window.location?.pathname;
+  const currentPath = location.pathname;
 
   const handleNavigation = (path) => {
-    window.location.href = path;
+    navigate(path);
     setIsMenuOpen(false);
   };
 
@@ -65,7 +68,7 @@ const Header = () => {
           {!user ? (
             <Button variant={currentPath === '/login' ? 'default' : 'ghost'} size="sm" onClick={() => handleNavigation('/login')} className="hidden md:inline-flex">Login</Button>
           ) : (
-            <Button variant="ghost" size="sm" onClick={async () => { try { await logout(); handleNavigation('/login'); } catch {} }}>Logout</Button>
+            <Button variant="ghost" size="sm" onClick={async () => { try { await logout(); navigate('/login'); } catch {} }}>Logout</Button>
           )}
           
           {/* Settings for desktop */}

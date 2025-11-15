@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import GardenCanvas from './components/GardenCanvas';
@@ -8,6 +9,7 @@ import GardenCustomization from './components/GardenCustomization';
 import GrowthAnimationSystem from './components/GrowthAnimationSystem';
 
 const VirtualGarden = () => {
+  const navigate = useNavigate();
   const [activeView, setActiveView] = useState('garden');
   const [selectedTheme, setSelectedTheme] = useState('forest');
   const [selectedLayout, setSelectedLayout] = useState('natural');
@@ -84,7 +86,7 @@ const VirtualGarden = () => {
 
   // Handle navigation
   const handleNavigation = (path) => {
-    window.location.href = path;
+    navigate(path);
   };
 
   // Export garden screenshot

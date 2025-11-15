@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -6,6 +7,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 const Register = () => {
   const { register } = useAuth();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +21,7 @@ const Register = () => {
     try {
       console.log('Attempting registration:', { email, name });
       await register(email, password, name);
-      window.location.href = '/dashboard-home';
+      navigate('/dashboard-home');
     } catch (err) {
       console.error('Registration error:', err);
       console.error('Error code:', err.code);
